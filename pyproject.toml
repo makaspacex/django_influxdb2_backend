@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=65", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "django-influxdb2-backend"
+version = "0.1.0"
+description = "Django 5.2 database backend for InfluxDB 2.x using Flux"
+requires-python = ">=3.11"
+authors = [{name = "OpenAI", email = "example@example.com"}]
+readme = "README.md"
+license = {text = "MIT"}
+dependencies = [
+    "django>=5.2,<5.3",
+    "influxdb-client>=1.42.0",
+]
+
+[project.optional-dependencies]
+test = [
+    "pytest>=8.2",
+    "pytest-django>=4.8",
+    "freezegun>=1.2",
+]
+
+[tool.pytest.ini_options]
+minversion = "8.0"
+addopts = "-ra"
+python_files = ["test_*.py", "*_tests.py"]
+DJANGO_SETTINGS_MODULE = "django_influxdb2_backend.tests.settings"
+
+[tool.setuptools]
+packages = ["django_influxdb2_backend", "django_influxdb2_backend.tests", "django_influxdb2_backend.metrics"]
